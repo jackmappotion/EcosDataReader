@@ -20,7 +20,7 @@ class EconomicIndexDataReader(_DataReader):
 
     def get_unemployment_cnt_df(self, start_date, end_date):
         """ 실업급여 수 """
-        unemployment_cnt_df = self.ecos_fetcher.fetch_item_value_df('901Y032', 'M', start_date, end_date, 'I11A')
+        unemployment_cnt_df = self.ecos_fetcher.fetch_item_value_df('901Y084', 'M', start_date, end_date)
         unemployment_cnt_df = unemployment_cnt_df[unemployment_cnt_df['ITEM_CODE2'] == 'P']
         unemployment_cnt_df = unemployment_cnt_df.pivot(index='TIME', columns='ITEM_NAME1', values='DATA_VALUE')
         unemployment_cnt_df.columns.name = None
@@ -28,7 +28,7 @@ class EconomicIndexDataReader(_DataReader):
     
     def get_unemployment_won_df(self, start_date, end_date):
         """ 실업급여 금액 """
-        unemployment_won_df = self.ecos_fetcher.fetch_item_value_df('901Y032', 'M', start_date, end_date, 'I11A')
+        unemployment_won_df = self.ecos_fetcher.fetch_item_value_df('901Y084', 'M', start_date, end_date)
         unemployment_won_df = unemployment_won_df[unemployment_won_df['ITEM_CODE2'] == 'A']
         unemployment_won_df = unemployment_won_df.pivot(index='TIME', columns='ITEM_NAME1', values='DATA_VALUE')
         unemployment_won_df.columns.name = None
